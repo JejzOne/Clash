@@ -1,0 +1,11 @@
+DOMAIN-KEYWORD,openai
+DOMAIN-SUFFIX,challenges.cloudflare.com
+# Add ai.com
+DOMAIN-SUFFIX,ai.com
+# Add stripe.com
+DOMAIN-SUFFIX,invoice.stripe.com
+DOMAIN-SUFFIX,stripe.com
+#add poe.com
+DOMAIN-SUFFIX,poe.com
+#add bard.google.com
+DOMAIN-SUFFIX,bard.google.com

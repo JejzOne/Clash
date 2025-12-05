@@ -1,0 +1,180 @@
+name: Build All MRS
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 22 * * *'  # 每天自动构建
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Download and install mihomo
+        run: |
+          mkdir -p ./tools/
+          wget https://github.com/DustinWin/proxy-tools/releases/download/mihomo/mihomo-meta-linux-amd64.tar.gz -O - | tar -zxf - -C ./tools/
+          mv -f ./tools/CrashCore ./tools/mihomo
+          chmod +x ./tools/mihomo
+
+      - name: Download and convert list files to .mrs
+        run: |
+          mkdir -p ./mihomo-ruleset
+
+          declare -A urls
+          urls["ChinaMedia"]="https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ChinaMedia.list"
+          urls["GlobalMedia"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.list"
+          urls["Telegram"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Telegram/Telegram.list"
+          urls["YouTube"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/YouTube/YouTube.list"
+          urls["TikTok"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/TikTok/TikTok.list"
+          urls["Netflix"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix.list"
+          urls["OpenAI"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.list"
+          urls["Twitter"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Twitter/Twitter.list"
+          urls["Game"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/Game.list"
+          urls["Apple"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple.list"
+          urls["SystemOTA"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/SystemOTA/SystemOTA.list"
+          urls["Jejz_Cn"]="https://raw.githubusercontent.com/Jejz168/Clash/main/List/Jejz_Cn.list"
+          urls["Jejz_Un"]="https://raw.githubusercontent.com/Jejz168/Clash/main/List/Jejz_Un.list"
+          urls["Microsoft"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.list"
+          urls["PrivateTracker"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/PrivateTracker/PrivateTracker.list"
+          urls["ChinaNoMedia"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaNoMedia/ChinaNoMedia.list"
+          urls["Proxy"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Proxy/Proxy.list"
+          urls["ChinaIPs"]="https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaIPs/ChinaIPs.list"
+
+          input_dir="./mihomo-ruleset"
+          convert_tool="./tools/mihomo"
+
+          # 1. 下载所有 .list 文件
+          for name in "${!urls[@]}"; do
+            echo "Downloading and converting $name"
+            curl -sSL "${urls[$name]}" -o "$input_dir/$name.list"
+          done
+
+          # 2. 清洗所有 .list 文件
+          for file in "$input_dir"/*.list; do
+            echo "list and merging $file"
+            base_name="$(basename "$file" .list)"
+            list_domain="${input_dir}/${base_name}_domain.list"
+            list_ip="${input_dir}/${base_name}_ip.list"
+
+            # 1. 提取并清洗域名类规则
+            grep -E '^(DOMAIN|DOMAIN-SUFFIX),' "$file" | sed -E \
+              -e 's/^DOMAIN,//' \
+              -e 's/^DOMAIN-SUFFIX,/+\./' \
+              -e 's/,no-resolve$//' > "$list_domain"
+
+            # 2. 提取并清洗 IP 类规则
+            grep -E '^(IP-CIDR|IP-CIDR6),' "$file" | sed -E \
+              -e 's/^IP-CIDR,//' \
+              -e 's/^IP-CIDR6,//' \
+              -e 's/,no-resolve$//' > "$list_ip"
+
+          done
+
+          # 3. 转换为 .yaml
+          for file in "$input_dir"/*.list; do
+            case "$file" in
+             *_domain.list|*_ip.list) continue ;;  # 跳过中间产物
+            esac
+            echo "yaml and merging $file"
+            base_name="$(basename "$file" .list)"
+            yaml_domain="${input_dir}/${base_name}_domain.yaml"
+            yaml_ip="${input_dir}/${base_name}_ip.yaml"
+
+            domain_rules=$(grep -E '^(DOMAIN|DOMAIN-SUFFIX),' "$file" || true)
+            if [[ -n "$domain_rules" ]]; then
+              echo 'payload:' > "$yaml_domain"
+              echo "$domain_rules" | sed -E \
+                -e "s/,no-resolve$//" \
+                -e "s/DOMAIN,/  - '/" \
+                -e "s/DOMAIN-SUFFIX,/  - '+\./" \
+                -e "s/$/'/" >> "$yaml_domain"
+            fi
+
+            ip_rules=$(grep -E '^(IP-CIDR|IP-CIDR6),' "$file" || true)
+            if [[ -n "$ip_rules" ]]; then
+              echo 'payload:' > "$yaml_ip"
+              echo "$ip_rules" | sed -E \
+                -e "s/,no-resolve$//" \
+                -e "s/IP-CIDR,/  - '/" \
+                -e "s/IP-CIDR6,/  - '/" \
+                -e "s/$/'/" >> "$yaml_ip"
+            fi
+          done
+
+          # 4. 转换为 .mrs
+          for file in "$input_dir"/*.list; do
+            case "$file" in
+              *_domain.list|*_ip.list) continue ;;  # 跳过中间产物
+            esac
+            echo "mrs and merging $file"
+            base_name="$(basename "$file" .list)"
+            list_domain="${input_dir}/${base_name}_domain.list"
+            list_ip="${input_dir}/${base_name}_ip.list"
+            if [ -s "$list_domain" ]; then
+              $convert_tool convert-ruleset domain text "$list_domain" "$input_dir/${base_name}_domain.mrs"
+            else
+              echo "Warning: $list_domain is empty after cleaning, skipping .mrs"
+            fi
+
+            if [ -s "$list_ip" ]; then
+              $convert_tool convert-ruleset ipcidr text "$list_ip" "$input_dir/${base_name}_ip.mrs"
+            else
+              echo "Warning: $list_ip is empty after cleaning, skipping .mrs"
+            fi
+          done
+
+          find "$input_dir" -maxdepth 1 -type f -name '*.list' ! -name '*_domain.list' ! -name '*_ip.list' -delete
+
+          find "$input_dir" -type f -size 0 -delete
+
+          echo "update_version=$(TZ=Asia/Shanghai date '+%Y-%m-%d %H:%M:%S')" >> $GITHUB_ENV
+
+      - name: Push to "download" branch
+        run: |
+          cd mihomo-ruleset
+          git init
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git checkout -b download
+          git add .
+          git commit -m "${{ env.update_version }}"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.API_TOKEN }}@github.com/${{ github.repository }}"
+          git push -f origin download
+
+      - name: Upload .mrs to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: mihomo-ruleset
+          tag_name: mihomo-ruleset
+          files: ./mihomo-ruleset/*
+          body: |
+            [mihomo](https://github.com/MetaCubeX/mihomo) rule-set 规则集文件  
+            规则集文件更新于 ${{ env.update_version }}
+            本规则集适用于订阅行为类型为 `domain` 或 `ipcidr`，详见下表：
+
+            | behavior 类型 | 文件内容格式限制           |
+            |---------------|----------------------------|
+            | `domain`      | 只允许裸域名 / 子域名      |
+            | `ipcidr`      | 只允许 IP / 子网格式        |
+            | `classical`   | 支持 Clash 格式（含类型前缀） |
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
+
+      - name: Remove old Releases
+        uses: dev-drprasad/delete-older-releases@master
+        with:
+          keep_latest: 2
+          delete_tags: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
+
+      - name: Delete workflow runs
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          retain_days: 0
+          keep_minimum_runs: 2
