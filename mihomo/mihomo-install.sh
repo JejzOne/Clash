@@ -111,7 +111,7 @@ if [ -f "$CONFIG_DIR/config.yaml" ]; then
   info "配置文件已存在，跳过下载。"
 else
   info "下载 config.yaml..."
-  curl -sSL https://raw.githubusercontent.com/Jejz168/Clash/main/mihomo/mihomo-config.yaml -o "$CONFIG_DIR/config.yaml"
+  curl -sSL https://raw.githubusercontent.com/JejzOne/Clash/main/mihomo/mihomo-config.yaml -o "$CONFIG_DIR/config.yaml"
 fi
 
 info "请修改配置文件：$CONFIG_DIR/config.yaml"
