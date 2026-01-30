@@ -12,6 +12,7 @@
 # DOMAIN-REGEX,^abc.*com,PROXY #正则匹配域名
 # RULE-SET,providername,PROXY #匹配规则集
 
+DOMAIN,gsa.apple.com
 DOMAIN-SUFFIX,sm.ms
 DOMAIN-SUFFIX,eu.org
 DOMAIN-SUFFIX,fs1.app
@@ -30,6 +31,7 @@ DOMAIN-KEYWORD,nodejs
 DOMAIN-KEYWORD,python
 DOMAIN-KEYWORD,777117
 DOMAIN-KEYWORD,argotunnel
+DOMAIN-KEYWORD,developerservices
 
 
 # 🔥自定义国外规则
