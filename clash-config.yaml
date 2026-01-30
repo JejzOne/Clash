@@ -318,6 +318,8 @@ proxy-groups:
   
 
 rules:
+  - RULE-SET,Jejz_Cn,⭐️ Jejz国内
+  - RULE-SET,Jejz_Un,🌟 Jejz国外
   - RULE-SET,TikTok,🎵 TikTok
   - RULE-SET,Telegram,📲 Telegram
   - RULE-SET,YouTube,📽 YouTube
@@ -327,8 +329,6 @@ rules:
   - RULE-SET,Game,🎮 游戏平台
   - RULE-SET,Apple,🍎 苹果服务
   - RULE-SET,SystemOTA,🍎 ios更新屏蔽
-  - RULE-SET,Jejz_Cn,⭐️ Jejz国内
-  - RULE-SET,Jejz_Un,🌟 Jejz国外
   - RULE-SET,Microsoft,Ⓜ️ 微软服务
   - RULE-SET,PrivateTracker,🇧🇹 PT下载
   - RULE-SET,ChinaMedia,🌏 国内媒体
