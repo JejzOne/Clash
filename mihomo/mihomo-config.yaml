@@ -10,13 +10,13 @@ Direct_first: &Direct_first {type: select, proxies: [DIRECT, 🚀 全局设置, 
 
 Include_all: &Include_all {type: select, proxies: [🚀 全局设置, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, 🌍 其它地区, 🔑 专用线路, ☝️ 手动切换, ☝️ 手动切换1, ☝️ 手动切换2, ☝️ 手动切换3]}
 
-UrlTest_Base: &UrlTest_Base {type: url-test, include-all: true, url: 'http://www.gstatic.com/generate_204', tolerance: 50, interval: 300, max-failed-times: 1, lazy: true, hidden: true}
+UrlTest_Base: &UrlTest_Base {type: url-test, include-all: true, url: 'http://www.gstatic.com/generate_204', tolerance: 50, interval: 300, timeout: 2000, max-failed-times: 3, lazy: true, hidden: true}
 
-Fallback_Base: &Fallback_Base {type: fallback, include-all: true, url: 'http://www.gstatic.com/generate_204', interval: 60, max-failed-times: 1, lazy: true, hidden: true}
+Fallback_Base: &Fallback_Base {type: fallback, include-all: true, url: 'http://www.gstatic.com/generate_204', interval: 300, timeout: 2000, max-failed-times: 3, lazy: true, hidden: true}
 
-LoadBalance_Base: &LoadBalance_Base {type: load-balance, include-all: true, strategy: consistent-hashing, url: 'http://www.gstatic.com/generate_204', interval: 60, max-failed-times: 1, lazy: true, hidden: true}
+LoadBalance_Base: &LoadBalance_Base {type: load-balance, include-all: true, strategy: consistent-hashing, url: 'http://www.gstatic.com/generate_204', interval: 300, timeout: 2000, max-failed-times: 3, lazy: true, hidden: true}
 
-PProviders: &PProviders {type: http, interval: 86400, health-check: {enable: true, url: 'http://www.gstatic.com/generate_204', interval: 300, max-failed-times: 1}, filter: '^(?!.*(music|𝐌𝐮𝐬𝐢𝐜|Unbolck|M0NATA|M0NATAS|NetEase|网易云|云音乐|音乐|数值|🎵|🎧|🎶|(?i)Music|回国|公众号|封禁|赞助商|账号|试用|电报|最新|域名|剩余|手游|游戏|(?i)Netease|拒绝|直连|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|traffic))'}
+PProviders: &PProviders {type: http, interval: 86400, health-check: {enable: true, url: 'http://www.gstatic.com/generate_204', interval: 300}, filter: '^(?!.*(music|𝐌𝐮𝐬𝐢𝐜|Unbolck|M0NATA|M0NATAS|NetEase|网易云|云音乐|音乐|数值|🎵|🎧|🎶|(?i)Music|回国|公众号|封禁|赞助商|账号|试用|电报|最新|域名|剩余|手游|游戏|(?i)Netease|拒绝|直连|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author|traffic))'}
 
 ##############################################
 # 机场订阅，Airport_01/02/03名称不能重复,但可修改为自己喜欢的
@@ -217,11 +217,11 @@ proxy-groups:
 
   - {name: 🚀 全局设置, type: select, proxies: [♻️ 自动选择, 🔯 故障切换, 🔮 负载均衡, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, 🌍 其它地区, ☝️ 手动切换, ☝️ 手动切换1, ☝️ 手动切换2, ☝️ 手动切换3, DIRECT], icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Admin.png"}
 
-  - {name: ♻️ 自动选择, type: url-test, include-all: true, url: 'http://www.gstatic.com/generate_204', interval: 300, tolerance: 50, max-failed-times: 1, lazy: true, exclude-filter: "(?i)(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Auto.png"}
+  - {name: ♻️ 自动选择, type: url-test, include-all: true, url: 'http://www.gstatic.com/generate_204', interval: 300, tolerance: 50, timeout: 2000, max-failed-times: 3, lazy: true, exclude-filter: "(?i)(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Auto.png"}
 
-  - {name: 🔯 故障切换, type: fallback, include-all: true, url: 'http://www.gstatic.com/generate_204', interval: 120, max-failed-times: 1, lazy: true, exclude-filter: "(?i)(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
+  - {name: 🔯 故障切换, type: fallback, include-all: true, url: 'http://www.gstatic.com/generate_204', interval: 300, timeout: 2000, max-failed-times: 3, lazy: true, exclude-filter: "(?i)(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
 
-  - {name: 🔮 负载均衡, type: load-balance, include-all: true, strategy: consistent-hashing, url: 'http://www.gstatic.com/generate_204', interval: 180, max-failed-times: 1, lazy: true, exclude-filter: "(?i)(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
+  - {name: 🔮 负载均衡, type: load-balance, include-all: true, strategy: consistent-hashing, url: 'http://www.gstatic.com/generate_204', interval: 300, timeout: 2000, max-failed-times: 3, lazy: true, exclude-filter: "(?i)(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
   - {name: ☝️ 手动切换, type: select, include-all: true, icon: "https://raw.githubusercontent.com/Semporia/Hand-Painted-icon/master/Universal/Select.png"}
 
