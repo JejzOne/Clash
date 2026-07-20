@@ -1,6 +1,7 @@
 # 本规则漏网之鱼用的直连，首次用规则下不了，切换漏网之鱼为全局设置。
 # 本规则漏网之鱼用的直连，首次用规则下不了，切换漏网之鱼为全局设置。
 # 本规则漏网之鱼用的直连，首次用规则下不了，切换漏网之鱼为全局设置。
+
 # 锚点区
 Proxy_first: &Proxy_first {type: select, proxies: [🚀 全局设置, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, 🌍 其它地区, 🔑 专用线路, ☝️ 手动切换, ☝️ 手动切换1, ☝️ 手动切换2, ☝️ 手动切换3, DIRECT]}
 
@@ -254,65 +255,65 @@ proxy-groups:
 
   - {name: 🇺🇳 国外网站, <<: *Proxy_first, icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Area.png"}
 
-  - {name: 🇭🇰 香港节点, type: select, proxies: [香港自动, 香港故障, 香港均衡], include-all: true, filter: "(?i)(港|\\bhk\\b|\\bHK\\b|hongkong|Hong Kong|HongKong)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Hongkong.png"}
+  - {name: 🇭🇰 香港节点, type: select, proxies: [香港自动, 香港故障, 香港均衡], include-all: true, filter: "(?i)(港|hk|HK|hongkong|Hong Kong|HongKong)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Hongkong.png"}
 
-  - {name: 🇯🇵 日本节点, type: select, proxies: [日本自动, 日本故障, 日本均衡], include-all: true, filter: "(?i)(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|\\bJP\\b|Japan)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Japan.png"}
+  - {name: 🇯🇵 日本节点, type: select, proxies: [日本自动, 日本故障, 日本均衡], include-all: true, filter: "(?i)(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Japan.png"}
 
-  - {name: 🇺🇲 美国节点, type: select, proxies: [美国自动, 美国故障, 美国均衡], include-all: true, filter: "(?i)(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|\\bUS\\b|United States)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/America.png"}
+  - {name: 🇺🇲 美国节点, type: select, proxies: [美国自动, 美国故障, 美国均衡], include-all: true, filter: "(?i)(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/America.png"}
 
-  - {name: 🇨🇳 台湾节点, type: select, proxies: [台湾自动, 台湾故障, 台湾均衡], include-all: true, filter: "(?i)(🇨🇳|台|新北|彰化|\\bTW\\b|Taiwan)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Taiwan_China.png"}
+  - {name: 🇨🇳 台湾节点, type: select, proxies: [台湾自动, 台湾故障, 台湾均衡], include-all: true, filter: "(?i)(🇨🇳|台|新北|彰化|TW|Taiwan)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Taiwan_China.png"}
 
-  - {name: 🇸🇬 狮城节点, type: select, proxies: [狮城自动, 狮城故障, 狮城均衡], include-all: true, filter: "(?i)(🇸🇬|新加坡|坡|狮城|\\bSG\\b|Singapore)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Singapore.png"}
+  - {name: 🇸🇬 狮城节点, type: select, proxies: [狮城自动, 狮城故障, 狮城均衡], include-all: true, filter: "(?i)(🇸🇬|新加坡|坡|狮城|SG|Singapore)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Singapore.png"}
 
-  - {name: 🇰🇷 韩国节点, type: select, proxies: [韩国自动, 韩国故障, 韩国均衡], include-all: true, filter: "(?i)(🇰🇷|\\bKR\\b|Korea|\\bKOR\\b|首尔|韩|韓)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Korea.png"}
+  - {name: 🇰🇷 韩国节点, type: select, proxies: [韩国自动, 韩国故障, 韩国均衡], include-all: true, filter: "(?i)(🇰🇷|KR|Korea|KOR|首尔|韩|韓)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Korea.png"}
 
   - {name: 🌍 其它地区, type: select, proxies: [其它地区自动, 其它地区故障, 其它地区均衡], include-all: true, filter: "(?i)(俄|印|德|英|土|阿|拿|菲|澳|爱|荷|瑞|巴|越|泰|柬|法|意|以)", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/Rainbow_1.png"}
 
-  - {name: 香港自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(港|\\bhk\\b|\\bHK\\b|hongkong|Hong Kong|HongKong))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
+  - {name: 香港自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(港|hk|HK|hongkong|Hong Kong|HongKong))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
 
-  - {name: 日本自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|\\bJP\\b|Japan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
+  - {name: 日本自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
 
-  - {name: 美国自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|\\bUS\\b|United States))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
+  - {name: 美国自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
 
-  - {name: 台湾自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇨🇳|台|新北|彰化|\\bTW\\b|Taiwan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
+  - {name: 台湾自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇨🇳|台|新北|彰化|TW|Taiwan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
 
-  - {name: 狮城自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇸🇬|新加坡|坡|狮城|\\bSG\\b|Singapore))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
+  - {name: 狮城自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇸🇬|新加坡|坡|狮城|SG|Singapore))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
 
-  - {name: 韩国自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇰🇷|\\bKR\\b|Korea|\\bKOR\\b|首尔|韩|韓))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
+  - {name: 韩国自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(🇰🇷|KR|Korea|KOR|首尔|韩|韓))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
 
   - {name: 其它地区自动, <<: *UrlTest_Base, filter: "(?i)(?=.*(俄|印|德|英|土|阿|拿|菲|澳|爱|荷|瑞|巴|越|泰|柬|法|意|以))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/automation2.png"}
 
-  - {name: 香港故障, <<: *Fallback_Base, filter: "(?i)(?=.*(港|\\bhk\\b|\\bHK\\b|hongkong|Hong Kong|HongKong))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
+  - {name: 香港故障, <<: *Fallback_Base, filter: "(?i)(?=.*(港|hk|HK|hongkong|Hong Kong|HongKong))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
 
-  - {name: 日本故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|\\bJP\\b|Japan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
+  - {name: 日本故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
 
-  - {name: 美国故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|\\bUS\\b|United States))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
+  - {name: 美国故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
 
-  - {name: 台湾故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇨🇳|台|新北|彰化|\\bTW\\b|Taiwan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
+  - {name: 台湾故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇨🇳|台|新北|彰化|TW|Taiwan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
 
-  - {name: 狮城故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇸🇬|新加坡|坡|狮城|\\bSG\\b|Singapore))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
+  - {name: 狮城故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇸🇬|新加坡|坡|狮城|SG|Singapore))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
 
-  - {name: 韩国故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇰🇷|\\bKR\\b|Korea|\\bKOR\\b|首尔|韩|韓))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
+  - {name: 韩国故障, <<: *Fallback_Base, filter: "(?i)(?=.*(🇰🇷|KR|Korea|KOR|首尔|韩|韓))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
 
   - {name: 其它地区故障, <<: *Fallback_Base, filter: "(?i)(?=.*(俄|印|德|英|土|阿|拿|菲|澳|爱|荷|瑞|巴|越|泰|柬|法|意|以))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/fallback.png"}
 
-  - {name: 香港均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(港|\\bhk\\b|\\bHK\\b|hongkong|Hong Kong|HongKong))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
+  - {name: 香港均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(港|hk|HK|hongkong|Hong Kong|HongKong))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
-  - {name: 日本均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|\\bJP\\b|Japan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
+  - {name: 日本均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇯🇵|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
-  - {name: 美国均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|\\bUS\\b|United States))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
+  - {name: 美国均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇺🇸|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
-  - {name: 台湾均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇨🇳|台|新北|彰化|\\bTW\\b|Taiwan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
+  - {name: 台湾均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇨🇳|台|新北|彰化|TW|Taiwan))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
-  - {name: 狮城均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇸🇬|新加坡|坡|狮城|\\bSG\\b|Singapore))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
+  - {name: 狮城均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇸🇬|新加坡|坡|狮城|SG|Singapore))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
-  - {name: 韩国均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇰🇷|\\bKR\\b|Korea|\\bKOR\\b|首尔|韩|韓))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
+  - {name: 韩国均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(🇰🇷|KR|Korea|KOR|首尔|韩|韓))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
   - {name: 其它地区均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(俄|印|德|英|土|阿|拿|菲|澳|爱|荷|瑞|巴|越|泰|柬|法|意|以))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
-  - {name: 专用线路均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(IPLC|IEPL|\\bAGA\\b|iplc|iepl|\\baga\\b|专线))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
+  - {name: 专用线路均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(IPLC|IEPL|AGA|iplc|iepl|aga|专线))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
-  - {name: 奈飞均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(\\bNF\\b|奈|奈飞|netflix|Netflix|NETFLIX|Media))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
+  - {name: 奈飞均衡, <<: *LoadBalance_Base, filter: "(?i)(?=.*(NF|奈|奈飞|netflix|Netflix|NETFLIX|Media))^((?!(3.0|3倍|3x|4.0|4倍|4x|5.0|5倍|5x|6.0|6倍|6x|7.0|7倍|7x|8.0|8倍|8x|10.0|10倍|10x|15.0|15倍|15x|20.0|20倍|20x)).)*$", icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/load-balance.png"}
 
   - {name: 🐟 漏网之鱼, type: select, proxies: [DIRECT, REJECT, 🚀 全局设置, 🇭🇰 香港节点, 🇯🇵 日本节点, 🇺🇲 美国节点, 🇨🇳 台湾节点, 🇸🇬 狮城节点, 🇰🇷 韩国节点, 🌍 其它地区], icon: "https://raw.githubusercontent.com/JejzOne/Clash/main/icon/final.png"}
   
