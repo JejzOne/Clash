@@ -1,4 +1,6 @@
-:::writing{variant=“document” title=“README.md” id=“73519”}
+## 🔐 WireGuard 配置
+
+```yaml
 # WireGuard 配置
 proxies:
   - name: "🔐 WG内网"
@@ -15,4 +17,4 @@ proxies:
     persistent-keepalive: 25
     mtu: 1420
     udp: true
-:::
+```
