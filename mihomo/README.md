@@ -18,3 +18,7 @@ proxies:
     mtu: 1420
     udp: true
 ```
+然后改RULE-SET,Lan,DIRECT
+```yaml
+- RULE-SET,Lan,🔐 WG内网
+```
